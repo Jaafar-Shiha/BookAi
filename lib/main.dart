@@ -1,3 +1,5 @@
+import 'package:book_ai/core/utils/constants.dart';
+import 'package:book_ai/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,7 +13,11 @@ class BookAiApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: Container(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: kPrimaryColor
+      ),
+      home: const SplashView(),
     );
   }
 }
