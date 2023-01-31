@@ -1,7 +1,10 @@
 import 'package:book_ai/core/utils/assets.dart';
+import 'package:book_ai/core/utils/constants.dart';
+import 'package:book_ai/features/home/presentation/views/home_view.dart';
 import 'package:book_ai/features/splash/presentation/views/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({Key? key}) : super(key: key);
@@ -19,9 +22,21 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
   void initState() {
     super.initState();
 
+    initSlidingAnimation();
+
+    navigateToHome();
+  }
+
+  void navigateToHome() {
+    Future.delayed(const Duration(seconds: 2), () {
+      Get.to(() => const HomeView(), transition: Transition.fade, duration: kTransitionDuration);
+    });
+  }
+
+  void initSlidingAnimation() {
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(seconds: 1),
     );
 
     slidingAnimation = Tween<Offset>(
